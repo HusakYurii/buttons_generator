@@ -9,6 +9,7 @@
 <script>
   import { Application, Container } from "pixi.js";
   import { Button } from "../libs/Button";
+  import { mapGetters } from "vuex";
 
   export default {
     name: "CanvasView",
@@ -19,15 +20,13 @@
         stage: null
       };
     },
+    computed: mapGetters(["button"]),
     methods: {
-      addButton(conf = this.getDefault()) {
+      addButton(conf = this.button) {
         const btn = Button.create(conf);
         this.stage.addChild(btn);
       },
-      getDefault() {
-        return this.$store.getters.button;
-      },
-      initView(){
+      initView() {
         const { stage, ticker } = new Application({
           width: this.width,
           height: this.height,

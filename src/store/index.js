@@ -12,7 +12,7 @@ export default new Vuex.Store({
         width: 235,
         height: 50,
         radius: 20,
-        color: 0xFFFFFF,
+        color: "#FFFFFF",
         alpha: 1,
         anchor: { x: 0.5, y: 0.5 },
       },
@@ -40,6 +40,9 @@ export default new Vuex.Store({
   getters: {
     button(state){
       return state.button;
+    },
+    params(state){
+      return state.button.params;
     }
   },
   actions: {},
