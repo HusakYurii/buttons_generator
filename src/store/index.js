@@ -13,9 +13,9 @@ export default new Vuex.Store({
         height: 50,
         radius: 20,
         color: 0xFFFFFF,
-        alpha: 1
+        alpha: 1,
+        anchor: { x: 0.5, y: 0.5 },
       },
-      anchor: { x: 0.5, y: 0.5 },
       text: {
         string: "Hellow World",
         anchor: { x: 0.5, y: 0.5 },
