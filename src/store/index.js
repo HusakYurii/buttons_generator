@@ -8,7 +8,7 @@ export default new Vuex.Store({
     button: {
       name: "Default",
       isGraphics: true,
-      graphics: {
+      params: {
         width: 235,
         height: 50,
         radius: 20,

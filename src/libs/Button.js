@@ -62,8 +62,8 @@ class Button extends Container {
     return btn;
   }
 
-  static getGraphicsData({ graphics, anchor }) {
-    const { width, height, radius, color, alpha } = graphics;
+  static getGraphicsData({ params, anchor }) {
+    const { width, height, radius, color, alpha } = params;
     return Object.assign({},
       {
         texture: new Graphics()
