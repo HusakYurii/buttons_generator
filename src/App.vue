@@ -1,6 +1,10 @@
 <template>
     <div id="app" class="container">
-        <h4>PIXI.js Buttons Editor</h4>
+        <div class="row justify-content-center">
+            <div class="col-">
+                <h4>PIXI.js Buttons Editor</h4>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <Controls/>
