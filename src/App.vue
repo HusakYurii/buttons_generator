@@ -1,7 +1,14 @@
 <template>
-    <div id="app">
-        <Controls/>
-        <CanvasView/>
+    <div id="app" class="container">
+        <h4>PIXI.js Buttons Editor</h4>
+        <div class="row">
+            <div class="col">
+                <Controls/>
+            </div>
+            <div class="col">
+                <CanvasView/>
+            </div>
+        </div>
     </div>
 </template>
 

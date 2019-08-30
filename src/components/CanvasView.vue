@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <canvas>
             <p>Oops! Seems that your browser does not support canvas tag</p>
         </canvas>
@@ -49,6 +49,4 @@
   };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
