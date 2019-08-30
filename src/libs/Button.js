@@ -54,6 +54,11 @@ class Button extends Container {
     /* For basic animations use ticker*/
   }
 
+  static fixColorCode(code) {
+    let color = String(code);
+    return !!color.match(/^#/) ? color.replace(/^#/, "0x") : color.replace(/^0x/, "#");
+  }
+
   static create({ text, ...button }) {
     const { texture, ...params } = button.isGraphics ? this.getGraphicsData(button) : "";
     /*this.getSpriteData(rest); // TODO add method for getting data from image */
@@ -64,10 +69,11 @@ class Button extends Container {
 
   static getGraphicsData({ params }) {
     const { width, height, radius, color, alpha, anchor } = params;
+
     return Object.assign({},
       {
         texture: new Graphics()
-          .beginFill(color, alpha)
+          .beginFill(this.fixColorCode(color), alpha)
           .drawRoundedRect(0, 0, width, height, radius)
           .endFill()
           .generateCanvasTexture(SCALE_MODES.LINEAR, 1),
