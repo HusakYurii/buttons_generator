@@ -1,16 +1,29 @@
 <template>
     <div class="container-fluid">
         <div>
-            <h5>Background sizes</h5>
-            <div v-for="(param, name) in params">
+            <h5>Button sizes</h5>
+            <div v-for="(param, name, ind) in params">
                 <div class="row input-group-sm mb-1">
-                    <label v-bind:for="name" class="m-0">{{name}}</label>
+                    <label v-bind:for="name" class="m-0">{{param.label || name}}</label>
                     <input v-bind:id="name"
-                           v-bind:value="param"
-                           v-bind:type="(name === 'color' ? 'color' : 'number')"
-                           v-on:input="updateParam"
+                           v-bind:value="param.value"
+                           v-bind:type="param.type"
+                           v-bind:key="ind"
+                           v-on:input="onInput"
                            class="form-control p-1"
-                           step="1"
+                           min="0">
+                </div>
+            </div>
+            <h5>Button text</h5>
+            <div v-for="(param, name, ind) in text">
+                <div class="row input-group-sm mb-1">
+                    <label v-bind:for="name" class="m-0">{{param.label || name}}</label>
+                    <input v-bind:id="name"
+                           v-bind:value="param.value"
+                           v-bind:type="param.type"
+                           v-bind:key="ind"
+                           v-on:input="onInput"
+                           class="form-control p-1"
                            min="0">
                 </div>
             </div>
@@ -19,16 +32,17 @@
 </template>
 
 <script>
-  import { mapGetters } from "vuex";
+  import { mapGetters, mapActions } from "vuex";
 
   export default {
     name: "Controls",
     computed: {
-      ...mapGetters(["button",  "params"])
+      ...mapGetters(["params", "text"])
     },
     methods: {
-      updateParam(e){
-        //TODO connect mutations of vuex with this component
+      ...mapActions(["updateProperty"]),
+      onInput({target: {id, value}}) {
+        this.updateProperty({property: id, value: Number(value)});
       }
     }
   };
