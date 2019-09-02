@@ -1,5 +1,5 @@
 <template>
-    $END$
+
 </template>
 
 <script>
@@ -9,5 +9,7 @@
 </script>
 
 <style scoped>
-
+    /*
+          This component can be used for Complex (multi value) inputs such as Select
+        */
 </style>

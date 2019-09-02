@@ -4,7 +4,6 @@
         <input v-bind:id="data.name"
                v-bind:value="data.value"
                v-bind:type="data.type"
-               v-bind:key="data.key"
                v-on:input="onInput"
                class="form-control p-1"
                min="0">
@@ -13,16 +12,19 @@
 
 <script>
   export default {
-    name: "TextInput",
-    params: ["data"],
+    name: "GeneralInput",
+    props: ["data"],
     methods: {
       onInput({ target: { id, value } }) {
-
+        const fixedValue = isNaN(Number(value)) ? value : Number(value);
+        this.$emit("onInput", { property: id, value: fixedValue });
       }
     }
   };
 </script>
 
 <style scoped>
-
+    /*
+        This component can be used for General (with one value) inputs such as Number, color, text
+    */
 </style>
