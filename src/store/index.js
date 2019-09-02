@@ -9,42 +9,43 @@ export default new Vuex.Store({
       name: "Default",
       isGraphics: true,
       params: {
-        width: 235,
-        height: 50,
-        radius: 20,
-        color: "#FFFFFF",
-        alpha: 1,
-        anchor: { x: 0.5, y: 0.5 },
+        width: { type: "number", value: 235 },
+        height: { type: "number", value: 50 },
+        radius: { type: "number", value: 20 },
+        color: { type: "color", value: "#FFFFFF" },
+        alpha: { type: "number", value: 1 },
+        anchorX: { label: "anchor-x", type: "number", value: 0.5 },
+        anchorY: { label: "anchor-y", type: "number", value: 0.5 }
       },
       text: {
-        string: "Hellow World",
-        anchor: { x: 0.5, y: 0.5 },
-        styles: {
-          fill: [
-            "#fb251a",
-            "#1d0bf4",
-            "black"
-          ],
-          fillGradientStops: [
-            0,
-            0.5,
-            1
-          ],
-          fontStyle: "italic",
-          fontVariant: "small-caps",
-          fontSize: 30
-        }
+        string: { type: "text", "value": "Hellow World" },
+        anchorX: { label: "anchor-x", type: "number", value: 0.5 },
+        anchorY: { label: "anchor-y", type: "number", value: 0.5 },
+        fill: {label: "text-color",type:"color", value:"#FB251A"},
+        fontStyle: {label: "font-style", type:"select", value: ["italic"]},
+        fontSize: { label: "font-size", type: "number", value: 30 }
       }
     }
   },
   getters: {
-    button(state){
+    button(state) {
       return state.button;
     },
-    params(state){
+    params(state) {
       return state.button.params;
+    },
+    text(state) {
+      return state.button.text;
     }
   },
-  actions: {},
-  mutations: {}
+  actions: {
+    updateProperty({ commit }, payload) {
+      commit("updateProperty", payload);
+    }
+  },
+  mutations: {
+    updateProperty(state, { property, value }) {
+      state.button.params[property].value = value;
+    }
+  }
 });
