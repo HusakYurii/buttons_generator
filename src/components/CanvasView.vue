@@ -8,8 +8,7 @@
 
 <script>
   import { Application, Container } from "pixi.js";
-  import { Button } from "../libs/Button";
-  import { mapGetters } from "vuex";
+  import { Button } from "../pixiLibs/Button";
 
   export default {
     name: "CanvasView",
@@ -20,9 +19,8 @@
         stage: null
       };
     },
-    computed: mapGetters(["button"]),
     methods: {
-      addButton(conf = this.button) {
+      addButton(conf = {}) {
         const btn = Button.create(conf);
         this.stage.addChild(btn);
       },
@@ -39,7 +37,7 @@
 
         this.stage = stage.addChild(new Container());
         this.stage.position.set(this.width / 2, this.height / 2);
-        this.addButton();
+        //this.addButton();
       }
     },
     mounted() {

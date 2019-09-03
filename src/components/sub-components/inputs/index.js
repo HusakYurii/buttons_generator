@@ -1,7 +1,7 @@
-import GeneralInput from "./GeneralInput";
+import Input from "./Input";
 import SelectInput from "./SelectInput";
 
 export {
-  GeneralInput,
+  Input,
   SelectInput
 };

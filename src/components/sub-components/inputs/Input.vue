@@ -1,6 +1,6 @@
 <template>
     <div class="row input-group-sm mb-1">
-        <label v-bind:for="data.name" class="m-0">{{data.label || data.name}}</label>
+        <label v-bind:for="data.name" class="m-0">{{data.label}}</label>
         <input v-bind:id="data.name"
                v-bind:value="data.value"
                v-bind:type="data.type"
