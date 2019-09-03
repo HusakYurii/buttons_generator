@@ -17,8 +17,7 @@
 </template>
 
 <script>
-  import Controls from "./components/Controls";
-  import CanvasView from "./components/CanvasView";
+  import {Controls, CanvasView} from "./components";
 
   export default {
     name: "app",
