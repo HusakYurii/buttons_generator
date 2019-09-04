@@ -4,7 +4,6 @@
         <input v-bind:id="data.name"
                v-bind:value="data.value"
                v-bind:type="data.type"
-               v-on:input="onInput"
                class="form-control p-1"
                min="0">
     </div>
@@ -13,13 +12,7 @@
 <script>
   export default {
     name: "GeneralInput",
-    props: ["data"],
-    methods: {
-      onInput({ target: { id, value } }) {
-        const fixedValue = isNaN(Number(value)) ? value : Number(value);
-        this.$emit("onInput", { property: id, value: fixedValue });
-      }
-    }
+    props: ["data"]
   };
 </script>
 

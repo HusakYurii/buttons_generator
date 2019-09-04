@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div v-on:input.prevent="onInput">
         <h5>{{name}}</h5>
         <div v-for="(param, name, ind) in inputs" v-bind:key="ind">
-            <Input v-bind:data="{name, ...param}" v-on:onInput="onInput"/>
+            <Input v-bind:data="{name, ...param}"/>
         </div>
     </div>
 </template>
 
 <script>
-  import staticInputs from "vuex";
+  import { mapGetters, mapActions } from "vuex";
   import { Input } from "./inputs";
 
   export default {
@@ -17,31 +17,32 @@
       Input
     },
     computed: {
-      ...staticInputs.mapGetters([
+      ...mapGetters([
         "name",
         "inputs",
         "graphics"
       ])
     },
     methods: {
-      ...staticInputs.mapActions([
+      ...mapActions([
         "toggleOutputGraphics",
         "updateOutputs",
         "initOutputState"
       ]),
-      onInput(data) {
-        this.updateOutputs(data);
+      onInput({ target: { id, value } }) {
+        const fixedValue = isNaN(Number(value)) ? value : Number(value);
+        this.updateOutputs({ property: id, value: fixedValue });
       }
     },
-    beforeMount(){
-        const allInputs = { graphics: this.graphics, ...this.inputs};
-        const output = {name: this.name};
+    beforeMount() {
+      const allInputs = { graphics: this.graphics, ...this.inputs };
+      const output = { name: this.name };
 
-        for(const key in allInputs) {
-          output[key] = allInputs[key].value;
-        }
+      for (const key in allInputs) {
+        output[key] = allInputs[key].value;
+      }
 
-        this.initOutputState(output);
+      this.initOutputState(output);
     }
   };
 </script>
