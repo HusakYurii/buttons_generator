@@ -2,9 +2,10 @@
 const state = {
   layout: Object.freeze({
     name: "Button Text",
-    string: { type: "text", "value": "Hellow World" },
-    styles: {
-      fontStyle: { label: "font-style", type: "select", value: ["italic"] },
+    inputs: {
+      isText: { label: "is text", type: "checkbox", value: true },
+      string: { label: "text", type: "text", value: "Hellow World" },
+      fontStyle: { label: "font-style", type: "select", value: "italic" },
       fontSize: { label: "font-size", type: "number", value: 30 },
       fill: { label: "text-color", type: "color", value: "#FB251A" },
       anchorX: { label: "anchor-x", type: "number", value: 0.5 },
@@ -14,18 +15,16 @@ const state = {
   outputs: { /* this props will be used for pixi button*/ }
 };
 const getters = {
-  string: (state) => state.layout.string,
-  styles: (state) => state.layout.styles
+  textSectionName: (state) => state.layout.name,
+  textInputs: (state) => state.layout.inputs
 };
 const actions = {
-  initOutputsStrings: ({ commit }, payload) => commit("initStrings", payload),
-  updateOutputString: ({ commit }, payload) => commit("string", payload),
-  updateOutputStyles: ({ commit }, payload) => commit("styles", payload)
+  initTextOutputs: ({ commit }, payload) => commit("setTextOutputs", payload),
+  updateOutputStyles: ({ commit }, payload) => commit("setStyles", payload)
 };
 const mutations = {
-  initStrings: (state, payload) => state.outputs = payload,
-  string: (state, payload) => state.outputs.string = payload,
-  styles: (state, { property, value }) => state.outputs[property] = value
+  setTextOutputs: (state, payload) => state.outputs = payload,
+  setStyles: (state, { property, value }) => state.outputs[property] = value
 };
 
 export default {
