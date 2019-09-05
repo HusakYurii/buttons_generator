@@ -1,16 +1,18 @@
 <template>
     <div class="container-fluid">
         <GraphicInputs/>
+        <TextInputs />
     </div>
 </template>
 
 <script>
-  import { GraphicInputs } from "./sub-components";
+  import { GraphicInputs, TextInputs } from "./sub-components";
 
   export default {
     name: "Controls",
     components: {
-      GraphicInputs
+      GraphicInputs,
+      TextInputs
     }
   };
 </script>
