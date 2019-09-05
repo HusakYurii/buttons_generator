@@ -16,7 +16,8 @@ const state = {
 };
 const getters = {
   textSectionName: (state) => state.layout.name,
-  textInputs: (state) => state.layout.inputs
+  textInputs: (state) => state.layout.inputs,
+  textOutputs: (state) => state.outputs
 };
 const actions = {
   initTextOutputs: ({ commit }, payload) => commit("setTextOutputs", payload),

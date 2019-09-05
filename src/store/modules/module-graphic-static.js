@@ -17,7 +17,8 @@ const state = {
 };
 const getters = {
   graphicsSectionName: (state) => state.layout.name,
-  graphicsInputs: (state) => state.layout.inputs
+  graphicsInputs: (state) => state.layout.inputs,
+  graphicsOutputs: (state) => state.outputs
 };
 const actions = {
   initGraphicsOutputs: ({ commit }, payload) => commit("setGraphicsOutputs", payload),
