@@ -1,9 +1,9 @@
 /* Object.freeze is used to prevent Vue of setting getters & setters for each property */
 const state = {
   layout: Object.freeze({
-    name: "Static State",
-    graphics: { type: "checkbox", value: true },
+    name: "Button Sizes",
     inputs: {
+      isGraphics: { label: "is graphics", type: "checkbox", value: true },
       width: { label: "width", type: "number", value: 235 },
       height: { label: "height", type: "number", value: 50 },
       radius: { label: "radius", type: "number", value: 20 },
@@ -16,19 +16,16 @@ const state = {
   outputs: { /* this props will be used for pixi button*/ }
 };
 const getters = {
-  name: (state) => state.layout.name,
-  graphics: (state) => state.layout.graphics,
-  inputs: (state) => state.layout.inputs
+  graphicsSectionName: (state) => state.layout.name,
+  graphicsInputs: (state) => state.layout.inputs
 };
 const actions = {
-  initOutputState: ({ commit }, payload) => commit("initState", payload),
-  toggleOutputGraphics: ({ commit }, payload) => commit("graphics", payload),
-  updateOutputs: ({ commit }, payload) => commit("outputs", payload)
+  initGraphicsOutputs: ({ commit }, payload) => commit("setGraphicsOutputs", payload),
+  updateGraphicsOutputs: ({ commit }, payload) => commit("setOutputs", payload)
 };
 const mutations = {
-  initState: (state, payload) => state.outputs = payload,
-  graphics: (state, payload) => state.outputs.graphics = payload,
-  outputs: (state, { property, value }) => state.outputs[property] = value
+  setGraphicsOutputs: (state, payload) => state.outputs = payload,
+  setOutputs: (state, { property, value }) => state.outputs[property] = value
 };
 
 export default {

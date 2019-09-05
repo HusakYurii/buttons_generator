@@ -1,9 +1,10 @@
 <template>
-    <div v-on:input.prevent="onInput">
-        <h5>{{name}}</h5>
-        <div v-for="(param, name, ind) in inputs" v-bind:key="ind">
-            <Input v-bind:data="{name, ...param}"/>
-        </div>
+    <div v-on:input.stop="onInput">
+        <h5>{{graphicsSectionName}}</h5>
+        <Input v-for="(param, name, ind) in graphicsInputs"
+               v-bind:data="{name, ...param}"
+               v-bind:key="ind"/>
+
     </div>
 </template>
 
@@ -18,31 +19,28 @@
     },
     computed: {
       ...mapGetters([
-        "name",
-        "inputs",
-        "graphics"
+        "graphicsSectionName",
+        "graphicsInputs"
       ])
     },
     methods: {
       ...mapActions([
-        "toggleOutputGraphics",
-        "updateOutputs",
-        "initOutputState"
+        "updateGraphicsOutputs",
+        "initGraphicsOutputs"
       ]),
       onInput({ target: { id, value } }) {
         const fixedValue = isNaN(Number(value)) ? value : Number(value);
-        this.updateOutputs({ property: id, value: fixedValue });
+        this.updateGraphicsOutputs({ property: id, value: fixedValue });
       }
     },
     beforeMount() {
-      const allInputs = { graphics: this.graphics, ...this.inputs };
-      const output = { name: this.name };
+      const output = { name: this.graphicsSectionName };
 
-      for (const key in allInputs) {
-        output[key] = allInputs[key].value;
+      for (const key in this.graphicsInputs) {
+        output[key] = this.graphicsInputs[key].value;
       }
 
-      this.initOutputState(output);
+      this.initGraphicsOutputs(output);
     }
   };
 </script>
