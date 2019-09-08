@@ -17,7 +17,8 @@
       return {
         width: 800,
         height: 600,
-        stage: null
+        stage: null,
+        button: null
       };
     },
     methods: {
@@ -35,15 +36,38 @@
 
         this.stage = stage.addChild(new Container());
         this.stage.position.set(this.width / 2, this.height / 2);
-        //this.addButton();
       },
-      addButton() {
-        const btn = Button.create();
-        this.stage.addChild(btn);
+      subscribeOnStore() {
+        this.$store.subscribe(({ type }) => {
+          (type === "updateStylesOutput" ||
+            type === "updateGraphicsOutputs") ? this.drawButton() : "Do nothing here";
+        });
+      },
+      drawButton() {
+        this.stage.removeChildren();
+        this.button = Button.create(this.getConfig());
+        this.stage.addChild(this.button);
+      },
+      getConfig() {
+        const outputs = {
+          button: this.graphicsOutputs(),
+          text: this.textOutputs()
+        };
+
+        return Object.entries(outputs).reduce((acc, [key, value]) => {
+          const { anchorX: x, anchorX: y, ...rest } = value;
+          acc[key] = {
+            anchor: { x, y },
+            ...rest
+          };
+          return acc;
+        }, {});
       }
     },
     mounted() {
       this.initView();
+      this.subscribeOnStore();
+      this.drawButton();
     }
   };
 </script>
