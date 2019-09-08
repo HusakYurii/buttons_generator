@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import { mapGetters } from "vuex";
   import { Application, Container } from "pixi.js";
   import { Button } from "../pixiLibs/Button";
 
@@ -20,10 +21,7 @@
       };
     },
     methods: {
-      addButton(conf = {}) {
-        const btn = Button.create(conf);
-        this.stage.addChild(btn);
-      },
+      ...mapGetters(["graphicsOutputs", "textOutputs"]),
       initView() {
         const { stage, ticker } = new Application({
           width: this.width,
@@ -38,6 +36,10 @@
         this.stage = stage.addChild(new Container());
         this.stage.position.set(this.width / 2, this.height / 2);
         //this.addButton();
+      },
+      addButton() {
+        const btn = Button.create();
+        this.stage.addChild(btn);
       }
     },
     mounted() {
@@ -46,4 +48,6 @@
   };
 </script>
 
-<style scoped></style>
+<style scoped>
+    /* Search for a right way to take all outputs from store at common event and redraw view */
+</style>
