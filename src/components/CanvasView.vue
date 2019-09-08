@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="view-container">
         <canvas>
             <p>Oops! Seems that your browser does not support canvas tag</p>
         </canvas>
@@ -15,8 +15,8 @@
     name: "CanvasView",
     data() {
       return {
-        width: 800,
-        height: 600,
+        width: 600,
+        height: 300,
         stage: null,
         button: null
       };
@@ -72,6 +72,8 @@
   };
 </script>
 
-<style scoped>
-    /* Search for a right way to take all outputs from store at common event and redraw view */
+<style>
+    .view-container {
+        align-self: center;
+    }
 </style>

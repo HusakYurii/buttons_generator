@@ -1,7 +1,7 @@
 <template>
-    <div class="container-fluid">
+    <div class="controls-container">
         <GraphicInputs/>
-        <TextInputs />
+        <TextInputs/>
     </div>
 </template>
 
@@ -17,4 +17,11 @@
   };
 </script>
 
-<style scoped></style>
+<style>
+    .controls-container {
+        align-self: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+</style>

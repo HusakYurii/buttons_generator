@@ -1,5 +1,5 @@
 <template>
-    <div v-on:input.stop="onInput">
+    <div v-on:input.stop="onInput" class="graphic-inputs">
         <h5>{{graphicsSectionName}}</h5>
         <Input v-for="(param, name, ind) in graphicsInputs"
                v-bind:data="{name, ...param}"
@@ -45,6 +45,21 @@
   };
 </script>
 
-<style scoped>
+<style>
+    .graphic-inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+        width: 400px;
+    }
 
+    .graphic-inputs h5 {
+        font-size: 2rem;
+    }
+
+    .graphic-inputs label,
+    .graphic-inputs input {
+        font-size: 1.5rem;
+    }
 </style>

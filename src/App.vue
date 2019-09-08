@@ -1,23 +1,17 @@
 <template>
-    <div id="app" class="container">
-        <div class="row justify-content-center">
-            <div class="col-">
-                <h4>PIXI.js Buttons Editor</h4>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <Controls/>
-            </div>
-            <div class="col">
-                <CanvasView/>
-            </div>
-        </div>
+    <div id="app" class="wrapper">
+        <header>
+            <h4>Buttons Config Editor for PIXI.js</h4>
+        </header>
+        <main>
+            <CanvasView/>
+            <Controls/>
+        </main>
     </div>
 </template>
 
 <script>
-  import {Controls, CanvasView} from "./components";
+  import { Controls, CanvasView } from "./components";
 
   export default {
     name: "app",
@@ -29,5 +23,30 @@
 </script>
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
+    .wrapper {
+        width: 100%;
+        min-width: 960px;
+        height: 100vh;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    header > * {
+        font-size: 3rem;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
 </style>

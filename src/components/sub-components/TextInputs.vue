@@ -1,5 +1,5 @@
 <template>
-    <div v-on:input.stop="onInput">
+    <div v-on:input.stop="onInput" class="text-inputs">
         <h5>{{textSectionName}}</h5>
         <Input v-for="(param, name, ind) in textInputs"
                v-bind:data="{name, ...param}"
@@ -44,6 +44,21 @@
   };
 </script>
 
-<style scoped>
+<style>
+    .text-inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+        width: 400px;
+    }
 
+    .text-inputs h5 {
+        font-size: 2rem;
+    }
+
+    .text-inputs label,
+    .text-inputs input {
+        font-size: 1.5rem;
+    }
 </style>
