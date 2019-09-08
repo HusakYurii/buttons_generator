@@ -21,12 +21,12 @@ const getters = {
   graphicsOutputs: (state) => state.outputs
 };
 const actions = {
-  initGraphicsOutputs: ({ commit }, payload) => commit("setGraphicsOutputs", payload),
-  updateGraphicsOutputs: ({ commit }, payload) => commit("setOutputs", payload)
+  initGraphicsOutputs: ({ commit }, payload) => commit("initGraphicsOutputs", payload),
+  updateGraphicsOutputs: ({ commit }, payload) => commit("updateGraphicsOutputs", payload)
 };
 const mutations = {
-  setGraphicsOutputs: (state, payload) => state.outputs = payload,
-  setOutputs: (state, { property, value }) => state.outputs[property] = value
+  initGraphicsOutputs: (state, payload) => state.outputs = payload,
+  updateGraphicsOutputs: (state, { property, value }) => state.outputs[property] = value
 };
 
 export default {
