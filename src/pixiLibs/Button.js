@@ -19,7 +19,7 @@ class Button extends Container {
     this._button.pivot.set(width * x, height * y);
   }
 
-  addText({ string, anchor = { x: 0, y: 0 }, styles }) {
+  addText(string, anchor = { x: 0, y: 0 }, styles) {
     const txt = new Text(string, styles);
     txt.anchor.set(anchor.x, anchor.y);
     this.text.push(txt);
@@ -59,15 +59,18 @@ class Button extends Container {
     return !!color.match(/^#/) ? color.replace(/^#/, "0x") : color.replace(/^0x/, "#");
   }
 
-  static create({ text, ...button }) {
+  static create({ text, button }) {
     const { texture, ...params } = button.isGraphics ? this.getGraphicsData(button) : "";
     /*this.getSpriteData(rest); // TODO add method for getting data from image */
     const btn = new this(texture, params);
-    btn.addText(text);
+
+    const {string, anchor, styles} = text.isText ? this.getTextData(text) : "";
+    text.isText ? btn.addText(string, anchor, styles) : "";
+
     return btn;
   }
 
-  static getGraphicsData({ params }) {
+  static getGraphicsData(params) {
     const { width, height, radius, color, alpha, anchor } = params;
 
     return Object.assign({},
@@ -82,6 +85,16 @@ class Button extends Container {
         radius,
         anchor
       });
+  }
+
+  static getTextData(params){
+    const {string, anchor, ...styles} = params;
+
+    return Object.assign({}, {
+      string,
+      anchor,
+      styles
+    });
   }
 }
 
