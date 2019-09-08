@@ -4,6 +4,7 @@
         <input v-bind:id="data.name"
                v-bind:value="data.value"
                v-bind:type="data.type"
+               v-bind:checked="data.value"
                min="0">
     </div>
 </template>

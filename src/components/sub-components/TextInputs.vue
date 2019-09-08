@@ -27,9 +27,12 @@
         "initTextOutputs",
         "updateStylesOutput"
       ]),
-      onInput({ target: { id, value } }) {
-        const fixedValue = isNaN(Number(value)) ? value : Number(value);
-        this.updateStylesOutput({ property: id, value: fixedValue });
+      onInput({ target: { type, id, value, checked } }) {
+        const payload = (type === "checkbox") ? checked : value;
+        const fixedPayload = (type === "checkbox") ? payload :
+                            isNaN(Number(payload)) ? payload : Number(payload);
+
+        this.updateStylesOutput({ property: id, value: fixedPayload });
       }
     },
     beforeMount() {
