@@ -25,11 +25,11 @@
     methods: {
       ...mapActions([
         "initTextOutputs",
-        "updateOutputStyles"
+        "updateStylesOutput"
       ]),
       onInput({ target: { id, value } }) {
         const fixedValue = isNaN(Number(value)) ? value : Number(value);
-        this.updateOutputStyles({ property: id, value: fixedValue });
+        this.updateStylesOutput({ property: id, value: fixedValue });
       }
     },
     beforeMount() {

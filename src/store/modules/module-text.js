@@ -21,11 +21,11 @@ const getters = {
 };
 const actions = {
   initTextOutputs: ({ commit }, payload) => commit("initTextOutputs", payload),
-  updateOutputStyles: ({ commit }, payload) => commit("updateOutputStyles", payload)
+  updateStylesOutput: ({ commit }, payload) => commit("updateStylesOutput", payload)
 };
 const mutations = {
   initTextOutputs: (state, payload) => state.outputs = payload,
-  updateOutputStyles: (state, { property, value }) => state.outputs[property] = value
+  updateStylesOutput: (state, { property, value }) => state.outputs[property] = value
 };
 
 export default {
