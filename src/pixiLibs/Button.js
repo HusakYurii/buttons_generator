@@ -60,14 +60,26 @@ class Button extends Container {
   }
 
   static create({ text, button }) {
-    const { texture, ...params } = button.isGraphics ? this.getGraphicsData(button) : "";
-    /*this.getSpriteData(rest); // TODO add method for getting data from image */
+    const { texture, ...params } = !button.picture ? this.getGraphicsData(button) : this.getSpriteData(button);
     const btn = new this(texture, params);
 
     const {string, anchor, styles} = text.isText ? this.getTextData(text) : "";
     text.isText ? btn.addText(string, anchor, styles) : "";
 
     return btn;
+  }
+
+  static getSpriteData(params){
+    const { picture, width, height, radius, anchor } = params;
+
+    return Object.assign({},
+      {
+        texture: Texture.from(picture),
+        width,
+        height,
+        radius,
+        anchor
+      });
   }
 
   static getGraphicsData(params) {
