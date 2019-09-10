@@ -20,7 +20,7 @@
       getBase64(file) {
         return new Promise((res, rej) => {
           const reader = new FileReader();
-          reader.readAsArrayBuffer(file);
+          reader.readAsDataURL(file);
           reader.onload = () => res(reader.result);
           reader.onerror = (err) => rej(err);
         });
@@ -36,8 +36,13 @@
         text-align: center;
     }
 
-    .file-input > input {
+    .file-input input {
         margin: 0 auto;
         text-align: center;
+    }
+
+    .file-input label,
+    .file-input input {
+        font-size: 1.5rem;
     }
 </style>
