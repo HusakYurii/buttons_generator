@@ -1,21 +1,24 @@
 <template>
-    <div v-on:input.stop="onInput" class="graphic-inputs">
-        <h5>{{graphicsSectionName}}</h5>
-        <Input v-for="(param, name, ind) in graphicsInputs"
-               v-bind:data="{name, ...param}"
-               v-bind:key="ind"/>
-
+    <div>
+        <div v-on:input.stop="onInput" class="graphic-inputs">
+            <h5>{{graphicsSectionName}}</h5>
+            <Input v-for="(param, name, ind) in graphicsInputs"
+                   v-bind:data="{name, ...param}"
+                   v-bind:key="ind"/>
+        </div>
+        <FileInput v-on:fileLoaded ="addPicture"/>
     </div>
 </template>
 
 <script>
   import { mapGetters, mapActions } from "vuex";
-  import { Input } from "./inputs";
+  import { Input, FileInput } from "./inputs";
 
   export default {
     name: "GraphicInputs",
     components: {
-      Input
+      Input,
+      FileInput
     },
     computed: {
       ...mapGetters([
@@ -26,7 +29,8 @@
     methods: {
       ...mapActions([
         "updateGraphicsOutputs",
-        "initGraphicsOutputs"
+        "initGraphicsOutputs",
+        "addPicture"
       ]),
       onInput({ target: { type, id, value, checked } }) {
         const payload = (type === "checkbox") ? checked : value;

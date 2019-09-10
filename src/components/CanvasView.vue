@@ -39,7 +39,8 @@
       },
       subscribeOnStore() {
         this.$store.subscribe(({ type }) => {
-          (type === "updateStylesOutput" ||
+          (type === "addPictureToOutputs" ||
+            type === "updateStylesOutput" ||
             type === "updateGraphicsOutputs") ? this.drawButton() : "Do nothing here";
         });
       },
@@ -55,9 +56,10 @@
         };
 
         return Object.entries(outputs).reduce((acc, [key, value]) => {
-          const { anchorX: x, anchorX: y, ...rest } = value;
+          const { anchorX: x, anchorX: y, picture ,...rest } = value;
           acc[key] = {
             anchor: { x, y },
+            picture,
             ...rest
           };
           return acc;

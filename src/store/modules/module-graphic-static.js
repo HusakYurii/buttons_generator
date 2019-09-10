@@ -3,7 +3,6 @@ const state = {
   layout: Object.freeze({
     name: "Button Sizes",
     inputs: {
-      isGraphics: { label: "is graphics", type: "checkbox", value: true },
       width: { label: "width", type: "number", value: 235 },
       height: { label: "height", type: "number", value: 50 },
       radius: { label: "radius", type: "number", value: 20 },
@@ -22,11 +21,13 @@ const getters = {
 };
 const actions = {
   initGraphicsOutputs: ({ commit }, payload) => commit("initGraphicsOutputs", payload),
-  updateGraphicsOutputs: ({ commit }, payload) => commit("updateGraphicsOutputs", payload)
+  updateGraphicsOutputs: ({ commit }, payload) => commit("updateGraphicsOutputs", payload),
+  addPicture: ({commit}, payload) => commit("addPictureToOutputs", payload)
 };
 const mutations = {
   initGraphicsOutputs: (state, payload) => state.outputs = payload,
-  updateGraphicsOutputs: (state, { property, value }) => state.outputs[property] = value
+  updateGraphicsOutputs: (state, { property, value }) => state.outputs[property] = value,
+  addPictureToOutputs: (state, payload) => state.outputs.picture = payload
 };
 
 export default {
