@@ -1,22 +1,33 @@
 import { Container, Graphics, Texture, Text, ObservablePoint, mesh, SCALE_MODES } from "pixi.js";
 
 class Button extends Container {
-  constructor(texture, { width, height, radius, anchor }) {
+  constructor(texture, params) {
     super();
 
     this._button = null;
     this._text = [];
     this._anchor = null;
 
-    this.button = this.addChild(new mesh.NineSlicePlane(texture, radius, radius, radius, radius));
+    const r = params.radius;
+    this.button = this.addChild(new mesh.NineSlicePlane(texture, r, r, r, r));
     this.anchor = new ObservablePoint(this._alignButton, this, 0, 0);
-    this.anchor.set(anchor.x, anchor.y);
+
+    this._modifyButton(params);
   }
 
   _alignButton() {
     const { x, y } = this._anchor;
     const { width, height } = this._button;
     this._button.pivot.set(width * x, height * y);
+  }
+
+  _modifyButton(params) {
+    ["width", "height", "alpha", "anchor"]
+      .filter(prop => !!params[prop])
+      .forEach(prop => {
+        if(prop === "anchor") Object.assign(this[prop], params[prop]);
+        else this.button[prop] = params[prop];
+      });
   }
 
   addText(string, anchor = { x: 0, y: 0 }, styles) {
@@ -63,14 +74,14 @@ class Button extends Container {
     const { texture, ...params } = !button.picture ? this.getGraphicsData(button) : this.getSpriteData(button);
     const btn = new this(texture, params);
 
-    const {string, anchor, styles} = text.isText ? this.getTextData(text) : "";
+    const { string, anchor, styles } = text.isText ? this.getTextData(text) : "";
     text.isText ? btn.addText(string, anchor, styles) : "";
 
     return btn;
   }
 
-  static getSpriteData(params){
-    const { picture, width, height, radius, anchor } = params;
+  static getSpriteData(params) {
+    const { picture, width, height, radius, alpha, anchor } = params;
 
     return Object.assign({},
       {
@@ -78,7 +89,8 @@ class Button extends Container {
         width,
         height,
         radius,
-        anchor
+        anchor,
+        alpha
       });
   }
 
@@ -88,19 +100,20 @@ class Button extends Container {
     return Object.assign({},
       {
         texture: new Graphics()
-          .beginFill(this.fixColorCode(color), alpha)
+          .beginFill(this.fixColorCode(color))
           .drawRoundedRect(0, 0, width, height, radius)
           .endFill()
           .generateCanvasTexture(SCALE_MODES.LINEAR, 1),
         width,
         height,
         radius,
-        anchor
+        anchor,
+        alpha
       });
   }
 
-  static getTextData(params){
-    const {string, anchor, ...styles} = params;
+  static getTextData(params) {
+    const { string, anchor, ...styles } = params;
 
     return Object.assign({}, {
       string,
