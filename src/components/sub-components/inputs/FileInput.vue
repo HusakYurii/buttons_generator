@@ -32,17 +32,19 @@
 <style scoped>
     .file-input {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
+        justify-content: space-around;
+        margin-top: 1rem;
     }
 
     .file-input input {
-        margin: 0 auto;
-        text-align: center;
+        width: 13rem;
+        color: transparent;
     }
 
     .file-input label,
     .file-input input {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 </style>

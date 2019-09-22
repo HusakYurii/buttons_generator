@@ -58,15 +58,26 @@
         flex-direction: column;
         justify-content: space-around;
         text-align: center;
-        width: 400px;
+        width: 40rem;
     }
 
     .graphic-inputs h5 {
         font-size: 2rem;
+        padding: 1rem;
     }
 
     .graphic-inputs label,
     .graphic-inputs input {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        padding: 0.2rem 0.2rem;
     }
+
+    .graphic-inputs label {
+        border-bottom: .2rem solid #fff;
+    }
+    .graphic-inputs input {
+        color: black;
+        border-radius: .5rem;
+    }
+
 </style>

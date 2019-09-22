@@ -2,7 +2,7 @@
     <div class="controls-container">
         <GraphicInputs/>
         <TextInputs/>
-        <button id="downloadConfig" v-on:click.prevent="downloadConfig">DOWNLOAD CONFIG</button>
+        <button id="downloadConfig" v-on:click.prevent="downloadConfig">Get config</button>
     </div>
 </template>
 
@@ -55,6 +55,21 @@
         align-self: center;
         display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: space-evenly;
+        margin-top: 2rem;
     }
+
+    .controls-container > div {
+        padding: 0 2rem;
+    }
+
+    #downloadConfig {
+        font-size: 2rem;
+        border-radius: 1rem;
+        padding: 1rem .5rem;
+        color: black;
+        align-self: center;
+    }
+
 </style>

@@ -29,7 +29,7 @@
           height: this.height,
           view: this.$el.querySelector("canvas"),
           antialias: true,
-          backgroundColor: 0xC2C2C2
+          backgroundColor: 0xf5f6fa
         });
 
         ticker.add(/* TODO add ticker if so */);

@@ -6,7 +6,7 @@ const state = {
       width: { label: "width", type: "number", value: 235 },
       height: { label: "height", type: "number", value: 50 },
       radius: { label: "radius", type: "number", value: 20 },
-      color: { label: "color", type: "color", value: "#FFFFFF" },
+      color: { label: "color", type: "color", value: "#365cf5" },
       alpha: { label: "alpha", type: "number", value: 1 },
       anchorX: { label: "anchor-x", type: "number", value: 0.5 },
       anchorY: { label: "anchor-y", type: "number", value: 0.5 }

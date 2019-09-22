@@ -7,7 +7,7 @@ const state = {
       string: { label: "text", type: "text", value: "Hellow World" },
       fontStyle: { label: "font-style", type: "select", value: "italic" },
       fontSize: { label: "font-size", type: "number", value: 30 },
-      fill: { label: "text-color", type: "color", value: "#FB251A" },
+      fill: { label: "text-color", type: "color", value: "#ffffff" },
       anchorX: { label: "anchor-x", type: "number", value: 0.5 },
       anchorY: { label: "anchor-y", type: "number", value: 0.5 }
     }

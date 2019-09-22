@@ -48,20 +48,34 @@
 </script>
 
 <style>
+
     .text-inputs {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         text-align: center;
-        width: 400px;
+        width: 40rem;
     }
 
     .text-inputs h5 {
         font-size: 2rem;
+        padding: 1rem;
     }
 
     .text-inputs label,
     .text-inputs input {
-        font-size: 1.5rem;
+        font-size: 2rem;
+        padding: 0.2rem 0.2rem;
+    }
+
+    .text-inputs label {
+        border-bottom: .2rem solid #fff;
+    }
+    .text-inputs input[type="checkbox"] {
+        width: 10rem;
+        height: 2.5rem;
+    }
+    .text-inputs input {
+        color: black;
+        border-radius: .5rem;
     }
 </style>
